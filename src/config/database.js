@@ -3,11 +3,11 @@ import { PrismaClient } from '@prisma/client';
 import winston from 'winston';
 
 export const logger = winston.createLogger({
-  level: 'info', // Anda dapat mengatur tingkat log sesuai kebutuhan Anda
+  level: 'info', 
   format: winston.format.json(),
   transports: [
     new winston.transports.Console({})
-    // Anda juga dapat menambahkan transport lain di sini jika diperlukan
+   
   ],
 });
 

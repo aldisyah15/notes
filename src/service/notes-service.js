@@ -3,12 +3,11 @@ import { addNotesValidation } from "../validation/validation-notesApp.js"
 import {prisma} from '../config/database.js';
 
 const addNotes =  async (request) => {
-    
     const notes = validate(addNotesValidation, request)
 
     console.info(notes)
 
-    return await prisma.user.create({
+    return prisma.user.create({
         data: notes,
         select: {
             id: true,
@@ -17,8 +16,6 @@ const addNotes =  async (request) => {
             completed: true
         }
     })
-
-
 }
 
 export default{
