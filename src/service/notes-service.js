@@ -7,6 +7,7 @@ const addNotes =  async (request) => {
 
     console.info(notes)
 
+ try {
     return prisma.user.create({
         data: notes,
         select: {
@@ -16,6 +17,9 @@ const addNotes =  async (request) => {
             completed: true
         }
     })
+ } catch (error) {
+    console.info(`erronya ada disini bro.. ${error}`)
+ }
 }
 
 export default{
