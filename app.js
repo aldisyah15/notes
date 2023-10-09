@@ -1,5 +1,5 @@
 import express from 'express';
-import { logger } from './src/config/database.js';
+//import { logger } from './src/config/logger.js';
 import { publicRouter } from './src/routes/api-public.js';
 import {errorMiddleware} from './src/middleware/error-middleware.js';
 
@@ -11,5 +11,6 @@ app.use(publicRouter)
 app.use(errorMiddleware)
 
 app.listen(3000, ()=>{
-    logger.info("App Run")
+    //logger.info("App Run")
+   console.info("run!")
 })

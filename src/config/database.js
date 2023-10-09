@@ -1,15 +1,16 @@
 
 import { PrismaClient } from '@prisma/client';
-import winston from 'winston';
+//import winston from 'winston';
+import {logger} from '../config/logger.js';
 
-export const logger = winston.createLogger({
-  level: 'info', 
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console({})
+// export const logger = winston.createLogger({
+//   level: 'info', 
+//   format: winston.format.json(),
+//   transports: [
+//     new winston.transports.Console({})
    
-  ],
-});
+//   ],
+// });
 
 export const prisma = new PrismaClient({
   log: [
@@ -25,9 +26,11 @@ export const prisma = new PrismaClient({
 });
 
 prisma.$on('query', (e) => {
-  logger.query(e);
+  //console.log('Query: ' + e.query)
+  logger.info('Query: ' + e.query);
 });
 
 prisma.$on('error', (e) => {
-  logger.error(e);
+  //logger.error(e);
+  logger.error('error: ' + e.error);
 });
