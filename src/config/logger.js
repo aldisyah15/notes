@@ -1,16 +1,16 @@
 import winston from 'winston';
 
 export const logger = winston.createLogger({
-    level: 'info', // Log level (error, warn, info, verbose, debug, silly)
+    level: 'info', 
     format: winston.format.combine(
-      winston.format.timestamp(), // Add timestamp to log entries
+      winston.format.timestamp(),
       winston.format.printf(({ timestamp, level, message }) => {
         //return `${timestamp} [${level}]: ${message}`;
         return JSON.stringify({ message: `${timestamp} ${level}: ${message}` });
       })
     ),
     transports: [
-      new winston.transports.Console(), // Log to console
+      new winston.transports.Console(),
     ],
   });
   
